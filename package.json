@@ -1,6 +1,6 @@
 {
   "name": "ajaia-mcp-server",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Model Context Protocol (MCP) server for Jira & Azure DevOps — 30 AI-powered tools for work item management, analytics, sprint planning, test generation, and cross-platform migration",
   "main": "dist/index.js",
   "bin": {
