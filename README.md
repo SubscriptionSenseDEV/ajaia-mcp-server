@@ -279,6 +279,43 @@ Once configured, you can ask your AI assistant natural language questions:
 | `AJAIA_API_KEY` | Yes      | Your AJAIA API key (get from Settings → MCP API Keys) | -                                     |
 | `AJAIA_API_URL` | No       | Custom API URL                                        | `https://ajaia.subscriptionsense.com` |
 
+## Security & Enterprise Compliance
+
+AJAIA is designed for corporate environments where data governance matters.
+
+### Data Handling
+
+| Principle | Detail |
+|-----------|--------|
+| **Zero Data Retention** | Work item content is processed in-memory and never persisted beyond the request lifecycle. AI analysis uses the Anthropic API, which [does not train on API inputs](https://www.anthropic.com/policies/privacy). |
+| **Source Code Safe** | AJAIA never accesses your repositories, pipelines, build artifacts, or source code. It operates exclusively on work items (titles, descriptions, acceptance criteria, comments). |
+| **Bring Your Own Scoped PAT** | You control the permission boundary. AJAIA uses your Personal Access Token with only the scopes you grant — we recommend `Work Items: Read & Write` only. |
+| **Credential Encryption** | PATs are encrypted at rest using AES-256-CBC before storage. They are decrypted only at request time and never logged. |
+
+### Authentication & Access Control
+
+- **API Key Authentication** — Every MCP request requires a valid API key (bcrypt-hashed, never stored in plaintext)
+- **Tier-Gated Access** — Tools are gated by subscription tier (Pro / Enterprise), preventing unauthorized access to advanced features
+- **Rate Limited** — Per-tier operation limits prevent abuse (Pro: 1,000 ops/month, Enterprise: unlimited)
+- **No Shared Tenancy** — Each API key maps to a single user's connected accounts
+
+### What AJAIA Cannot Do
+
+- ❌ Access your source code or repositories
+- ❌ Read or modify pipelines, builds, or releases
+- ❌ Access wikis, test plans, or board configurations
+- ❌ Operate outside the scopes of your PAT
+- ❌ Retain or sell your work item data
+
+### Enterprise Deployment
+
+For organizations requiring additional controls:
+
+- **Network-restricted PATs** — Scope your ADO/Jira PATs to specific IP ranges
+- **Read-only mode** — Grant only `Work Items: Read` for analysis-only use cases
+- **Audit trail** — All API requests are logged with timestamps and operation types
+- **Kill switch** — Revoke your API key or PAT instantly to cut all access
+
 ## Requirements
 
 - **Node.js**: 18.0.0 or higher
@@ -304,8 +341,8 @@ The server will automatically:
 
 - 📧 **Email**: support@subscriptionsense.com
 - 🌐 **Website**: https://ajaia.subscriptionsense.com
-- 🐛 **Issues**: https://github.com/pokiDaddy/Ultimate-Jira-ADO-MCP-AI-Assistant-Chatbot/issues
-- 📖 **Documentation**: https://github.com/pokiDaddy/Ultimate-Jira-ADO-MCP-AI-Assistant-Chatbot#readme
+- 🐛 **Issues**: https://github.com/SubscriptionSenseDEV/ajaia-mcp-server/issues
+- 📖 **Documentation**: https://github.com/SubscriptionSenseDEV/ajaia-mcp-server#readme
 
 ## License
 
