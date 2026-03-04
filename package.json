@@ -1,0 +1,63 @@
+{
+  "name": "ajaia-mcp-server",
+  "version": "2.0.0",
+  "description": "Model Context Protocol (MCP) server for Jira & Azure DevOps — 30 AI-powered tools for work item management, analytics, sprint planning, test generation, and cross-platform migration",
+  "main": "dist/index.js",
+  "bin": {
+    "ajaia-mcp-server": "./dist/index.js"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "jira",
+    "azure-devops",
+    "devops",
+    "ai-assistant",
+    "claude",
+    "cursor",
+    "vscode",
+    "copilot",
+    "agile",
+    "scrum",
+    "sprint",
+    "epic-breakdown",
+    "test-generation",
+    "analytics",
+    "project-management",
+    "work-items",
+    "migration"
+  ],
+  "author": "Subscription Sense / AJAIA",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.25.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SubscriptionSenseDEV/ajaia-mcp-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SubscriptionSenseDEV/ajaia-mcp-server/issues"
+  },
+  "homepage": "https://github.com/SubscriptionSenseDEV/ajaia-mcp-server#readme"
+}
